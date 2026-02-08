@@ -4,7 +4,8 @@
 
 VERDICT is a rigorous decision-making system that uses adversarial AI agents to analyze inputs against strict reality constraints. Unlike standard chatbots, VERDICT provides a binding decision: **APPROVED**, **CAUTION**, or **BLOCKED**.
 
-![Decision Authority Architecture](architecture_diagram.png)
+![Decision Authority Architecture](<img width="5441" height="6230" alt="architecture_diagram" src="https://github.com/user-attachments/assets/0aab56b4-e172-4cd5-90c9-f0b15f94c68e" />
+)
 
 ---
 
