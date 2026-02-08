@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>VERDICT | Deterministic Intelligence Engine</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        <link rel="icon" type="image/svg+xml" href="/static/assets/logo.svg">
+    <link rel="stylesheet" href="/static/styles.css?v=5">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header__logo">
+                <img src="/static/assets/logo.svg" alt="VERDICT Logo" class="header__icon">
+                <h1 class="header__title">VERDICT</h1>
+            </div>
+            <p class="header__subtitle">Deterministic Intelligence Engine</p>
+        </header>
+
+        <section id="input-section" class="input-section">
+            <label class="input-label" for="decision-input">Describe Your Decision</label>
+            <textarea id="decision-input" class="input-field"
+                placeholder="Example: I'm considering quitting my $80k job to start a restaurant. I have $50k saved, no restaurant experience, but I'm passionate about cooking."
+                rows="5"></textarea>
+            <button id="submit-btn" class="submit-btn" type="button">
+                <span class="submit-btn__text">ANALYZE DECISION</span>
+                <span class="submit-btn__loading">
+                    <span class="spinner"></span>
+                    Processing...
+                </span>
+            </button>
+        </section>
+
+
+
+        <div id="error-message" class="error-message"></div>
+
+        <section id="advisor-section" class="advisor-section">
+            <div class="advisor-cards-grid">
+                <div id="advisor-red" class="advisor-card advisor-card--red">
+                    <div class="advisor-header">
+                        <div class="advisor-icon"></div>
+                        <div class="advisor-name">Risk Analyst</div>
+                    </div>
+                    <div class="advisor-text" id="advisor-red-text"></div>
+                    <div class="speaking-indicator">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <div id="advisor-blue" class="advisor-card advisor-card--blue">
+                    <div class="advisor-header">
+                        <div class="advisor-icon"></div>
+                        <div class="advisor-name">Logic Analyst</div>
+                    </div>
+                    <div class="advisor-text" id="advisor-blue-text"></div>
+                    <div class="speaking-indicator">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <div id="advisor-yellow" class="advisor-card advisor-card--yellow">
+                    <div class="advisor-header">
+                        <div class="advisor-icon"></div>
+                        <div class="advisor-name">Opportunity Scout</div>
+                    </div>
+                    <div class="advisor-text" id="advisor-yellow-text"></div>
+                    <div class="speaking-indicator">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <div id="advisor-green" class="advisor-card advisor-card--green">
+                    <div class="advisor-header">
+                        <div class="advisor-icon"></div>
+                        <div class="advisor-name">Reality Check</div>
+                    </div>
+                    <div class="advisor-text" id="advisor-green-text"></div>
+                    <div class="speaking-indicator">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="final-decision" class="final-decision">
+                <div class="final-decision__icon" id="decision-icon"></div>
+                <div class="final-decision__label">FINAL DECISION</div>
+                <div class="final-decision__verdict" id="decision-verdict"></div>
+                <div class="final-decision__reason" id="decision-reason"></div>
+
+                <div class="scores-section" id="scores-section">
+                    <div class="score-item score-item--constraint">
+                        <div class="score-ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle class="score-ring__bg" cx="18" cy="18" r="14.5" />
+                                <circle class="score-ring__progress" id="ring-constraint" cx="18" cy="18" r="14.5"
+                                    stroke-dasharray="100" stroke-dashoffset="100" />
+                            </svg>
+                            <div class="score-ring__value" id="score-constraint">0%</div>
+                        </div>
+                        <div class="score-label">Constraint</div>
+                    </div>
+                    <div class="score-item score-item--risk">
+                        <div class="score-ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle class="score-ring__bg" cx="18" cy="18" r="14.5" />
+                                <circle class="score-ring__progress" id="ring-risk" cx="18" cy="18" r="14.5"
+                                    stroke-dasharray="100" stroke-dashoffset="100" />
+                            </svg>
+                            <div class="score-ring__value" id="score-risk">0%</div>
+                        </div>
+                        <div class="score-label">Risk</div>
+                    </div>
+                    <div class="score-item score-item--roi">
+                        <div class="score-ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle class="score-ring__bg" cx="18" cy="18" r="14.5" />
+                                <circle class="score-ring__progress" id="ring-roi" cx="18" cy="18" r="14.5"
+                                    stroke-dasharray="100" stroke-dashoffset="100" />
+                            </svg>
+                            <div class="score-ring__value" id="score-roi">0%</div>
+                        </div>
+                        <div class="score-label">ROI</div>
+                    </div>
+                    <div class="score-item score-item--overall">
+                        <div class="score-ring">
+                            <svg viewBox="0 0 36 36">
+                                <circle class="score-ring__bg" cx="18" cy="18" r="14.5" />
+                                <circle class="score-ring__progress" id="ring-overall" cx="18" cy="18" r="14.5"
+                                    stroke-dasharray="100" stroke-dashoffset="100" />
+                            </svg>
+                            <div class="score-ring__value" id="score-overall">0%</div>
+                        </div>
+                        <div class="score-label">Overall</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Optimizer Card -->
+            <div id="strategic-optimizer" class="strategic-optimizer">
+                <div class="optimizer-header">
+
+                    <div class="optimizer-title">STRATEGIC OPTIMIZER</div>
+                    <div class="optimizer-subtitle">Measurable improvements to reach APPROVED</div>
+                </div>
+                <div class="optimizer-suggestions" id="optimizer-suggestions">
+                    <!-- Suggestions will be inserted here -->
+                </div>
+            </div>
+
+            <button id="new-analysis-btn" class="new-analysis-btn">NEW ANALYSIS</button>
+        </section>
+
+        <footer class="footer">
+            <p class="footer__brand">VERDICT v1.0 — Powered by Gemini 3</p>
+        </footer>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay">
+        <div id="loading-message" class="loading-text">Gemini 3 reasoning engine activated.</div>
+
+        <div class="analysis-steps">
+            <div id="step-1" class="analysis-step">
+                <span class="analysis-step__icon">○</span>
+                <span>Extracting decision parameters...</span>
+            </div>
+            <div id="step-2" class="analysis-step">
+                <span class="analysis-step__icon">○</span>
+                <span>Running sensor council...</span>
+            </div>
+            <div id="step-3" class="analysis-step">
+                <span class="analysis-step__icon">○</span>
+                <span>Computing verdict...</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js?v=8"></script>
+</body>
+
+</html>

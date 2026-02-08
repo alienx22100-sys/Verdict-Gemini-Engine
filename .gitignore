@@ -1,0 +1,46 @@
+# ═══════════════════════════════════════════════════════════════════
+# DECISION AUTHORITY - .gitignore
+# Security: Prevents sensitive files from being committed
+# ═══════════════════════════════════════════════════════════════════
+
+# Environment variables (CRITICAL: contains API keys)
+.env
+.env.local
+.env.*.local
+
+# Keep the example file for documentation
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+eggs/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Debug/test files
+verify_*.py
+debug_*.py
+test_*.py
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
